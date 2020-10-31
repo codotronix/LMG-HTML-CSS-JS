@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Clown</title>
+	<style>
+		.scene {
+			position: relative;
+			height: 510px;
+			width: 280px;
+			margin: 20px auto;
+			box-shadow: 2px 2px 4px 1px #777777;
+            background: cyan;
+            background: repeating-linear-gradient(45deg, cyan, transparent 100px);
+            z-index: -2;
+		}
+		.clown,
+		.clown * {
+			position: absolute;
+		}
+		.clown {
+			top: 90px;
+			left: 110px;
+		}
+		.clown .head {
+            height: 80px;
+            width: 60px;
+            border: 1px solid #000;
+            border-radius: 50%;
+            background: ivory;
+            animation: headmove 500ms linear 0s infinite alternate;
+		}
+        .clown .head .hat {
+            height: 0;
+            width: 0;
+            border-left: 30px solid transparent;
+            border-right: 30px solid transparent;
+            border-bottom: 100px solid purple;
+            z-index: 4;
+            top: -80px;
+            left: -17px;
+            transform: rotate(-16deg);
+        }
+		.clown .head .eye {
+            height: 20px;
+            width: 12px;
+            border: 1px solid #000;
+            border-radius: 50%;
+            top: 20px;
+            right: 11px;
+		}
+        .clown .head .eye::after {
+            content: '';
+            height: 11px;
+            width: 7px;
+            border-radius: 50%;
+            background: blue;
+            bottom: 0px;
+            right: 0px;
+            display: block;
+            position: absolute;
+            transform: rotate(12deg);
+        }
+        .clown .head .nose {
+            height: 15px;
+            width: 15px;
+            border-radius: 50%;
+            background: #f00;
+            right: -15px;
+            bottom: 24px;
+        }
+        .clown .head .mouth {
+            height: 28px;
+            width: 21px;
+            border-bottom: 6px solid midnightblue;
+            border-bottom-left-radius: 50%;
+            bottom: 14px;
+            right: 4px;
+        }
+        .clown .body {
+            height: 200px;
+            width: 110px;
+            border: 1px solid #000;
+            background: #fff;
+            top: 80px;
+            left: -29px;
+            border-radius: 45%;
+            background: chartreuse;
+        }
+        .clown .body .hand {
+            width: 20px;
+            height: 150px;
+            /* background: #f00; */
+            left: 45px;
+            top: 20px;
+            border-radius: 10px;
+            transform-origin: top center;
+        }
+        .clown .body .left {
+            z-index: -1;
+        }
+        
+        .clown .body .leg {
+            width: 30px;
+            height: 160px;
+            left: 41px;
+            top: 149px;
+            border-radius: 20px;
+            transform-origin: top center;
+        }
+        .clown .body .hand.right {
+            z-index: 3;
+        }
+        .clown .body .leg.right {
+            z-index: 2;
+        }
+        .limbs-combo-1 {
+            /* transform: rotate(-50deg); */
+            background: dodgerblue;
+            animation: limbmove 1s linear 0s infinite alternate;
+        }
+        .limbs-combo-2 {
+            /* transform: rotate(50deg); */
+            background: orangered;
+            animation: limbmove 1s linear -1s infinite alternate;
+        }
+
+        @keyframes limbmove {
+            0% { transform: rotate(-50deg); }
+            100% { transform: rotate(50deg); }
+        }
+        @keyframes headmove {
+            0% { transform: rotate(-5deg); }
+            100% { transform: rotate(5deg); }
+        }
+	</style>
+</head>
+<body>
+	<div class="scene">
+		<div class="clown">
+			<div class="head">
+                <div class="hat"></div>
+                <div class="eye"></div>
+                <div class="nose"></div>
+                <div class="mouth"></div>
+            </div>
+            <div class="body">
+                <div class="hand left limbs-combo-1"></div>
+                <div class="hand right limbs-combo-2"></div>
+                <div class="leg left limbs-combo-2"></div>
+                <div class="leg right limbs-combo-1"></div>
+            </div>
+		</div>
+	</div>
+</body>
+</html>
